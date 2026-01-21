@@ -1,11 +1,21 @@
 #from datetime import date
 #from workalendar.america import BrazilSaoPauloState
-styled_file = []
+
+works_due = 0
+works_done = 0
 
 file = open('classes.txt','r')
-read_file = file.readlines()
+content_data = file.read()
+file.close()
 
-for line in _file:
-    if (line[-1] == '\n'):
-        styled_file
-print(read_file)
+for i in range(len(content_data)):
+    if ('due') in content_data[i]:
+        works_due +=1
+    if('done') in content_data[i]:
+        works_done +=1
+    else:
+        pass
+
+print(content_data)
+print(works_due)
+print(works_done)
