@@ -3,21 +3,32 @@
 
 works_due = 0
 works_done = 0
-words = []
+total_lines = 0
+content_data = []
+clean_list = []
+line_read = ""
 
-file = open('classes.txt','r')
-content_data = file.read()
-content = content_data
-file.close()
+with open('classes.txt','r') as file:
+    #content = content_data for debug
+    content_data = file.readlines()  
+for line in content_data:
+    line_read = line
+    clean_list = line_read.strip()
+    total_lines += 1
+    print(clean_list)
 
-words = content_data.strip().split()
-for word in words:
+ 
+'''for word in words:
     if (word == "due"):
         works_due +=1
     if (word == "done"):
         works_done +=1
+ '''
 
-print(content)
-#print(words)
-print(works_due)
-print(works_done)
+
+#print(content_data)
+#print(total_lines)
+#print(works_due)
+#print(works_done)
+
+
