@@ -5,17 +5,20 @@ works_due = 0
 works_done = 0
 total_lines = 0
 content_data = []
+clean_line = ""
 clean_list = []
-line_read = ""
 
 with open('classes.txt','r') as file:
     #content = content_data for debug
     content_data = file.readlines()  
+
 for line in content_data:
-    line_read = line
-    clean_list = line_read.strip()
-    total_lines += 1
-    print(clean_list)
+    clean_line = line.strip()
+    if (clean_line == ""):
+        pass
+    else:
+        clean_list.append(clean_line)
+        total_lines += 1
 
  
 '''for word in words:
@@ -27,7 +30,7 @@ for line in content_data:
 
 
 #print(content_data)
-#print(total_lines)
+print(total_lines)
 #print(works_due)
 #print(works_done)
 
