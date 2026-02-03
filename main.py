@@ -17,6 +17,7 @@ clean_info = ""
 clean_line = "" #variable to store a .strip line and store in a clean_list
 content_data = [] #Store the entire text file
 clean_list = [] #Store the file without useless spaces and \n
+clean_rest = ""
 
 
 #with open('classes.txt','r') as file: Normal File
@@ -25,34 +26,36 @@ with open('classes_errors.txt','r') as file:
 
 for line in content_data:
     clean_line = line.strip()
+
     if (clean_line == ""):
         empty_line += 1
     else:
         clean_list.append(clean_line)
         total_lines += 1
 
-        if (clean_line.count('-') == 1):
-            rest, info_data = clean_line.rsplit('-', 1)
-            clean_info = info_data.strip()
-            clean_rest = rest.strip()
-            valid_input +=1
-
-        if (clean_line.count('-') == 0):
-            missing_dash += 1
-
         if (clean_line.count('-') > 1):
             multiple_dashes += 1
 
-        if (rest == ""):
-            missing_subject += 1
+        elif (clean_line.count('-') == 0):
+            missing_dash += 1
 
-        if (clean_info == ""):
-            missing_status +=1
+        elif (clean_line.count('-') == 1):
+            rest, info_data = clean_line.rsplit('-', 1)
+            clean_info = info_data.strip()
+            clean_rest = rest.strip()
+
+            if (clean_info == ""):
+                missing_status += 1
+
+            elif (clean_rest == ""):
+                missing_subject += 1
         else:
-            unknown_status += 1
+            print(clean_rest)
+            print(clean_info)
+            #print(clean_line)
 
-print (empty_line)
-print(missing_dash)
+print(empty_line)
+print(missing_dash)  
 print(multiple_dashes)
 print(missing_subject)
 print(missing_status)
