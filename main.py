@@ -41,7 +41,7 @@ for line in content_data:
 
         elif (clean_line.count('-') == 1):
             rest, info_data = clean_line.rsplit('-', 1)
-            clean_info = info_data.strip()
+            clean_info = info_data.strip().lower()
             clean_rest = rest.strip()
 
             if (clean_info == ""):
@@ -49,23 +49,31 @@ for line in content_data:
 
             elif (clean_rest == ""):
                 missing_subject += 1
-        else:
-            print(clean_rest)
-            print(clean_info)
-            #print(clean_line)
+            
+            elif (clean_info != 'due' or 'done'):
+                unknown_status += 1
+            
+            else:
+                if (clean_info == 'due'):
+                    works_due += 1
+                    valid_input += 1
 
-print(empty_line)
-print(missing_dash)  
-print(multiple_dashes)
-print(missing_subject)
-print(missing_status)
-print(unknown_status)
-#print(rest)
-#print(info_data)
-#print(content_data)
-#print(total_lines)
-#print(works_due)
-#print(works_done)
-#print(clean_list)
+                elif (clean_info == 'done'):
+                    works_done += 1
+                    valid_input += 1
+            print(clean_info)
+
+
+print(f"Empty Lines:{empty_line}")
+print(f"missing_dash:{missing_dash}")  
+print(f"multiple_dashes:{multiple_dashes}")
+print(f"missing_subject:{missing_subject}")
+print(f"missing_status:{missing_status}")
+print(f"unknown_status:{unknown_status}")
+print(f"works_due:{works_due}")
+print(f"works_done:{works_done}")
+print(f"total_lines:{total_lines}")
+print(f"valid Lines:{valid_input}")
+
 
 
