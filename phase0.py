@@ -50,7 +50,7 @@ for line in content_data:
             elif (clean_rest == ""):
                 missing_subject += 1
             
-            elif (clean_info != 'due' or 'done'):
+            elif clean_info not in ['due', 'done']:
                 unknown_status += 1
             
             else:
@@ -72,7 +72,7 @@ print(f"missing_status:{missing_status}")
 print(f"unknown_status:{unknown_status}")
 print(f"works_due:{works_due}")
 print(f"works_done:{works_done}")
-print(f"total_lines:{total_lines}")
+#print(f"total_lines:{total_lines}")
 print(f"valid Lines:{valid_input}")
 
 
